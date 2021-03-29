@@ -24,6 +24,11 @@ def compute_error(y_true,y_pred,which_error='mse'):
         err1 = np.mean(np.abs(y_true[0]-susc)/y_true[0])*100
         err2 = np.mean(np.abs(y_true[1]-inf)/y_true[1])*100
         err3 = np.mean(np.abs(y_true[2]-rim)/y_true[2])*100
+        
+    elif which_error =='weighted':
+        err1 = np.sqrt(np.mean((y_true[0]-susc)**2))/2
+        err2 = np.sqrt(np.mean((y_true[1]-inf)**2))
+        err3 = np.sqrt(np.mean((y_true[2]-rim)**2))/2
     
     errm = (err1+err2+err3)/3
     
